@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
         },
         text: {
-            type: DataTypes.String(200),
+            type: DataTypes.STRING(200),
             unique: false,
             allowNull: true,
             defaultValue: ''
