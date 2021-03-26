@@ -1,8 +1,8 @@
 var createError = require('http-errors');
 var express = require('express');
+var morgan = require('morgan');
 var path = require('path');
 var cookieParser = require('cookie-parser');
-var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 
@@ -27,7 +27,6 @@ sequelize.sync({
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
