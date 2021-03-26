@@ -16,10 +16,15 @@ const authUtil = {
       return res.status(sc.UNAUTHORIZED).send(ut.fail(sc.UNAUTHORIZED, rm.EXPIRED_TOKEN));
     }
     if (user === TOKEN_INVALID) {
+
       return res.status(sc.UNAUTHORIZED).send(ut.fail(sc.UNAUTHORIZED, rm.INVALID_TOKEN));
     }
-    if (user.UserIdx === undefined) {
+    if (user.UserIdx === undefined) {    
+      console.log(user)   
+      console.log(user.UserIdx)     
+      console.log(user.uuid)      
       return res.status(sc.UNAUTHORIZED).send(ut.fail(sc.UNAUTHORIZED, rm.INVALID_TOKEN));
+      
     }
     req.decoded = user;
     next();

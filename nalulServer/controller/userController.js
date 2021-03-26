@@ -29,7 +29,7 @@ module.exports = {
             const {
                 accessToken,
                 refreshToken
-            } = await jwt.sign(uuid);
+            } = await jwt.sign(user);
             return res.status(sc.OK).send(ut.success(sc.OK, rm.SIGN_IN_SUCCESS, {
                 isMember,
                 accessToken,
@@ -48,11 +48,16 @@ module.exports = {
                     UserIdx
                 }
             })
-            user.agreement = 1
-            return res.status(sc.OK).send(ut.success(sc.OK, rm.SIGN_IN_SUCCESS))
+            result = await User.update({
+                agreement:1,
+            },{
+                where:{
+                UserIdx
+            }})
+            return res.status(sc.OK).send(ut.success(sc.OK, "약관 동의 성공"))
         } catch (error) {
             console.error(error);
-            return res.status(sc.INTERNAL_SERVER_ERROR).send(ut.fail(sc.INTERNAL_SERVER_ERROR, rm.SIGN_IN_FAIL));
+            return res.status(sc.INTERNAL_SERVER_ERROR).send(ut.fail(sc.INTERNAL_SERVER_ERROR, "약관 동의 실패"));
         }
 
     }
