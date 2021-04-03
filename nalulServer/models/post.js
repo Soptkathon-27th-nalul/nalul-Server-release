@@ -17,7 +17,11 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: true,
             defaultValue: ''
         },
-        
+        category: {
+            type: DataTypes.INTEGER,
+            unique: false,
+            allowNull: true,
+        },
         
     }, {
         tableName: 'POST_TB',
