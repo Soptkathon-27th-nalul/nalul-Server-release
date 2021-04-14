@@ -174,7 +174,12 @@ module.exports = {
                 random8: ran8,
                 random9: ran9,
             }
-            return res.status(sc.OK).send(ut.success(sc.OK, "성공", randoms));
+            if(ran1 == "" && ran2 == "" && ran3 == ""&& ran4 == ""&& ran5 == ""&& ran6 == ""&& ran7 == ""&& ran8 == ""&& ran9 == ""){
+                return res.status(sc.BAD_REQUEST).send(ut.fail(sc.BAD_REQUEST, "사진이 없습니다."));
+            }else{
+                return res.status(sc.OK).send(ut.success(sc.OK, "성공", randoms));
+            }
+            
         } catch (error) {
             console.error(error);
             return res.status(sc.INTERNAL_SERVER_ERROR).send(ut.fail(sc.INTERNAL_SERVER_ERROR, rm.INTERNAL_SERVER_ERROR));
