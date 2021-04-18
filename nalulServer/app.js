@@ -3,6 +3,9 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var moment = require('moment');
+require('moment-timezone'); 
+moment.tz.setDefault("Asia/Seoul"); 
 
 var indexRouter = require('./routes/index');
 
