@@ -8,7 +8,7 @@ var path = require('path')
 const upload = multer({
     storage: multerS3({
         s3,
-        bucket: 'nalul',
+        bucket: 'nalul2',
         acl: 'public-read',
         key: function (req, file, cb) {
             var ext = path.extname(file.originalname);
